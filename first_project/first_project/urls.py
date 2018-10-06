@@ -18,9 +18,11 @@ from django.urls import path
 from django.conf.urls import include
 
 from first_app import views
+# from first_form import views_form
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('first_app/', include('first_app.urls')),
     path('admin/', admin.site.urls),
+    path('first_app/', include('first_app.urls')),
+    path('first_form/', include('first_form.urls')),
 ]
