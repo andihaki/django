@@ -11,15 +11,17 @@
     <!-- <img src="{% static "images/city.jpg" %}" alt="opps" style="width:75%;height:75%;" /> -->
     <div class="djangotwo">
         {% if access_record %}
-            <table>
+            <table class="table table-striped table-hover">
                 <thead>
-                    <th>Site Name</th>
+                    <th>Name</th>
                     <th>Date Acessed</th>
                 </thead>
                 <tbody>
                     {% for data in access_record %}
                         <tr>
-                            <td>{{ data.name }}</td>
+                            {# |title = filter. gunanya untuk transform data di sebelah kirinya#}
+                            {# cut = custom filter. filenya ada di first_app/templates_tags/my_extras.py #}
+                            <td>{{ data.name|cut:'a' }}</td>
                             <td>{{ data.date }}</td>
                         </tr>
                         
