@@ -11,3 +11,12 @@ def index(request):
         'access_record': webpages_list,
     }
     return render(request, 'first_app/index.html', context=my_dict)
+
+def idx(request):
+    return render(request, 'default/index.html')
+
+def other(request):
+    return render(request, 'default/other.html')
+
+def relative(request):
+    return render(request, 'default/relative_url_templates.html')
