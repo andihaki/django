@@ -1,4 +1,25 @@
-# django
+# django 
+# vent
+django
+source /bin/activate
+
+## DB ORM
+create db connection in models.py
+python manage.py migrate
+python manage.py makemigrates app_name
+
+interactive command
+python manage.py shell
+
+>>> from app_name.models import class_name
+>>> t = class_name(column="value")
+>>> t.save()
+>>> print(class_name.objects.all())
+>>> quit()
+
+import models di admin.py
+
+python manage.py createsuperuser
 
 # venv
 ## start venv
