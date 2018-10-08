@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('first_app/', include('first_app.urls')),
     path('first_form/', include('first_form.urls')),
+    path('logout/', views.user_logout, name='logout'),
 ]
