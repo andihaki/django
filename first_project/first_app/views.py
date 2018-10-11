@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
 #login
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+# class base view
+from django.shortcuts import render
+from django.views.generic import View, TemplateView, ListView, DetailView
 
 from first_app.models import AccessRecord, Topic, Webpage
 from first_app.models import UserProfileInfo
@@ -88,3 +89,23 @@ def other(request):
 
 def relative(request):
     return render(request, 'default/relative_url_templates.html')
+
+# class base view
+from . import models
+
+class IndexView(TemplateView):
+    template_name = 'first_app/index.html'
+
+class SchoolListView(ListView):
+    # jika tidak di define context_object_name
+    # maka, context yang diinject ke html = school_list
+    context_object_name = 'schools'
+
+    model = models.School    
+
+class SchoolDetailView(DetailView):
+    # jika tidak di define context_object_name
+    # maka, context yang diinject ke html = school
+    context_object_name = 'school_detail'
+    model = models.School
+    template_name = 'first_app/school_detail.html'

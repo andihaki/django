@@ -1,0 +1,17 @@
+{% extends "first_app/first_app_base.html" %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1>Selamat datang</h1>
+    <h2>Detail sekolah:</h2>
+    <p>Name: {{ school_detail.name }}</p>
+    <p>Principal: {{ school_detail.principal }}</p>
+    <p>Location: {{ school_detail.location }}</p>
+
+    <h3>Students:</h3>
+    {# school_detail = dateng dari views.py #}
+    {% for student in school_detail.students.all %}
+        <p>{{student.name}} is {{student.age}} ago.</p>
+    {% endfor %}
+</div>
+{% endblock %}
