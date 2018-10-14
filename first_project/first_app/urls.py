@@ -7,7 +7,7 @@ from first_app import views
 app_name = 'first_app'
 
 school_patterns = ([
-    path('', views.SchoolListView.as_view(), name='list'),
+    path('', views.SchoolListView.as_view(), name='index'),
     path('<int:pk>/', views.SchoolDetailView.as_view(), name='detail'),
 ], 'first_app')
 
@@ -18,6 +18,6 @@ urlpatterns = [
     url('login/', views.user_login, name='user_login'),
     # path('<int:pk>/', views.SchoolDetailView.as_view(), name='detail'),
     # url('', views.SchoolListView.as_view(), name='list'),
-    path('', include(school_patterns))
+    path('', include(school_patterns, namespace='index')),
     # url('', views.IndexView.as_view(), name='index'),
 ]

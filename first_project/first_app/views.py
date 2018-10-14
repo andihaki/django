@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 # class base view
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from first_app.models import AccessRecord, Topic, Webpage
 from first_app.models import UserProfileInfo
@@ -109,3 +110,6 @@ class SchoolDetailView(DetailView):
     context_object_name = 'school_detail'
     model = models.School
     template_name = 'first_app/school_detail.html'
+
+class SchoolCreateView(CreateView):
+    model = models.School
