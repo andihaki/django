@@ -14,6 +14,9 @@ from first_app.models import UserProfileInfo
 
 from first_app.forms import UserForm, UserProfileInfoForm
 
+# untuk delete halaman 
+from django.urls import reverse_lazy
+
 # Create your views here.
 def index(request):
     webpages_list = AccessRecord.objects.order_by('date')
@@ -112,4 +115,13 @@ class SchoolDetailView(DetailView):
     template_name = 'first_app/school_detail.html'
 
 class SchoolCreateView(CreateView):
+    fields = ('name', 'principal', 'location')
     model = models.School
+
+class SchoolUpdateView(UpdateView):
+    fields = ('name', 'principal')
+    model = models.School
+
+class SchoolDeleteView(DeleteView):
+    model = models.School
+    success_url = reverse_lazy("first_app:index")
