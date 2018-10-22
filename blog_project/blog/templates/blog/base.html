@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
     <!-- Medium.com Editor style  -->
     <link rel="stylesheet" href="{% static 'css/medium-editor.min.css' %}">
@@ -15,15 +16,60 @@
 
     <!-- Custom CSS  -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    
     <!-- Fonts -->
-    {% block css_block %}
+    <link href="http://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+
+    {% block css %}
     {% endblock %}
     <title>Blog</title>
 </head>
 <body>
     <!-- Navbar -->
+    <nav class="navbar navbar-default techfont custom-navbar">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand bigbrand" href="{% url 'post_list' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'post_new' %}">New Post</a>
+                </li>
+                <li>
+                    <a href="{% url 'post_draft_list' %}">Drafts</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a>Welcome: {{user.username }}</a>
+                </li>
+                {% else %}
+                    <li>
+                        <a class="nav navbar-nav navbar-right" href="{% url 'login' %}">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
     
-    {% block body_block %}
-    {% endblock %}
+    <!-- CONTENT BLOCK -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
