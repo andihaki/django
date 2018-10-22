@@ -1,12 +1,29 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Medium.com Editor style  -->
+    <link rel="stylesheet" href="{% static 'css/medium-editor.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <script src="{% static 'js/medium-editor.min.js' %}"></script>
+
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <!-- Fonts -->
+    {% block css_block %}
+    {% endblock %}
+    <title>Blog</title>
 </head>
 <body>
+    <!-- Navbar -->
     
+    {% block body_block %}
+    {% endblock %}
 </body>
 </html>
