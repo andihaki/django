@@ -14,10 +14,10 @@
 
 {% if user.is_authenticated %}
     <a href="{% url 'post_edit' pk=post.pk%}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
+        <i class="fa fa-edit"></i>
     </a>
     <a href="{% url 'post_edit' pk=post.pk%}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-remove"></span>
+        <i class="fa fa-remove"></i>
     </a>
 {% endif %}
 
@@ -34,10 +34,10 @@
             {{ comment.created_date }}
                 {% if not comment.approved_comment %}
                     <a href="{% url 'comment_remove' pk=comment.pk%}" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <i class="fa fa-remove"></i>
                     </a>
                     <a href="{% url 'comment_approve' pk=comment.pk%}" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <i class="fa fa-check"></i>
                     </a>
                 {% endif %}
 
