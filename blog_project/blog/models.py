@@ -32,7 +32,7 @@ class Comment(models.Model):
     approved_comment = models.BooleanField(default=False)
 
     def approve(self):
-        self.approve_comment = True
+        self.approved_comment = True
         self.save()
 
     # kembali ke homepage / post list
