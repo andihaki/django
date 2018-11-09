@@ -8,3 +8,4 @@ python-dateutil==2.7.3
 pytz==2018.5
 six==1.11.0
 text-unidecode==1.2
+braces=1.13.0
