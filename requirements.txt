@@ -8,4 +8,6 @@ python-dateutil==2.7.3
 pytz==2018.5
 six==1.11.0
 text-unidecode==1.2
-braces=1.13.0
+braces==1.13.0
+django-bootstrap3==11.0.0
+misaka==2.1.0
