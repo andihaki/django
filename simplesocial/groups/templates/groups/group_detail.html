@@ -6,15 +6,15 @@
 
 <div class="content">
     {% if user in group.members.all %}
-        <a href="{% url 'group:leave'  slug=group.slug %}" 
+        <a href="{% url 'groups:leave'  slug=group.slug %}" 
         class="btn btn-lg btn-fill btn-warning">
-            <span class="glyphicon glyphicon-remove-circle"></span>
+            <i class='fa fa-times-circle-o'></i>
             Leave
         </a>
     {% else %}
-        <a href="{% url 'group:join'  slug=group.slug %}" 
+        <a href="{% url 'groups:join'  slug=group.slug %}" 
         class="btn btn-lg btn-fill btn-default">
-            <span class="glyphicon glyphicon-ok-circle"></span>
+            <i class='fa fa-check-circle-o'></i>
             Join
         </a>
     {% endif %}
@@ -22,7 +22,7 @@
 
 {% endblock %}
 
-{% block group_content %}
+{% block group-content %}
 <div class="col-md-8">
     {% if group.posts.count == 0 %}
         <h2>Tidak ada artikel</h2>

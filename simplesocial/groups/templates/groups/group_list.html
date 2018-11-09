@@ -1,11 +1,11 @@
 {% extends 'groups/group_base.html' %}
 
-{% block pregorup %}
+{% block pregroup %}
 <div class="col-md-4">
     <div class="content">
         {% if user.is_authenticated %}
             <h2>Hey Tayo
-                <a href="{% link 'post:for_user' username=user.username %}"
+                <a href="{% url 'posts:for_user' username=user.username %}">
                     @{{user.username}}
                 </a>
             </h2>
@@ -15,7 +15,7 @@
     </div>
     {% if user.is_authenticated %}
         <a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning">
-            <span class="glyphicon glyphicon-plus-sign">Buat Grup Baru!</span>
+            <span><i class='fa fa-plus'></i> Buat Grup Baru!</span>
         </a>
     {% endif %}
 </div>

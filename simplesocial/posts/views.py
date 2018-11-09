@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequireMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views import generic
+from django.contrib import messages
 
 from braces.views import SelectRelatedMixin
 
@@ -25,7 +26,7 @@ class UserPosts(generic.ListView):
         try:
             # user dari post yang sedang di-open
             # ambil semua post dari user tsb
-            self.post.user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
+            self.post_user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
         except User.DoesNotExist:
             raise Http404
         else:
@@ -45,7 +46,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
         # __ = object relation model
         return queryset.filter(user__username__iexact=self.kwargs.get('username'))
 
-class CreatePost(LoginRequireMixin, SelectRelatedMixin, generic.CreateView):
+class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
     fields = ('message', 'group')
     model = models.Post
 
@@ -55,7 +56,7 @@ class CreatePost(LoginRequireMixin, SelectRelatedMixin, generic.CreateView):
         self.object.save()
         return super().form_valid(form)
 
-class DeletePost(LoginRequireMixin, SelectRelatedMixin, generic.DeleteView):
+class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
     select_related = ('user', 'group')
     success_url = reverse_lazy('posts:all')
