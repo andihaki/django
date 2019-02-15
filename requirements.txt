@@ -1,7 +1,7 @@
 argon2-cffi==18.3.0
 bcrypt==3.1.4
 cffi==1.11.5
-Django==2.1.5
+Django==2.1.6
 Faker==0.9.1
 pycparser==2.19
 python-dateutil==2.7.3
